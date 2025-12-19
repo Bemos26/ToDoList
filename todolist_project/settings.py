@@ -116,3 +116,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Redirect to home page after login (which is the task list)
+LOGIN_REDIRECT_URL = 'task_list'
+
+# Redirect to login page after logout
+LOGOUT_REDIRECT_URL = 'login'
+
+# Login URL for @login_required decorator
+LOGIN_URL = 'login'

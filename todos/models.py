@@ -13,6 +13,9 @@ class Task(models.Model):
     # Status of the task: True if completed, False otherwise
     completed = models.BooleanField(default=False)
     
+    # Link to the user who owns this task
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=True, blank=True)
+    
     # Timestamp when the task was created
     created_at = models.DateTimeField(auto_now_add=True)
     

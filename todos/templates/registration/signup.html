@@ -1,0 +1,55 @@
+{% extends 'todos/base.html' %}
+
+{% block content %}
+<div class="form-container" style="max-width: 400px; margin: 0 auto;">
+    <h2 class="form-title" style="text-align: center;">Create Account</h2>
+
+    <form method="post" class="task-form">
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            <!-- Basic rendering for UserCreationForm which might have help text -->
+            {{ field }}
+            {% if field.help_text %}
+            <small style="display: block; color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem;">{{
+                field.help_text }}</small>
+            {% endif %}
+            {% if field.errors %}
+            <div style="color: var(--danger-color); font-size: 0.85rem; margin-top: 0.25rem;">
+                {% for error in field.errors %}
+                {{ error }}<br>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <div class="form-actions" style="justify-content: center; margin-top: 2rem;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up</button>
+        </div>
+
+        <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted);">
+            Already have an account? <a href="{% url 'login' %}"
+                style="color: var(--primary-color); font-weight: 600;">Log in</a>
+        </p>
+    </form>
+</div>
+<style>
+    /* Quick hacks to style default Django form widgets without widget tweaks in python */
+    .task-form input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 10px;
+        border: 1px solid #e2e8f0;
+        font-family: inherit;
+        font-size: 1rem;
+    }
+
+    .task-form ul {
+        list-style: none;
+        padding: 0;
+    }
+</style>
+{% endblock %}
