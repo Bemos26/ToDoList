@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'todos/css/style.css' %}">
 </head>
+
 <body>
     <div class="background-glob"></div>
     <div class="container">
@@ -18,8 +20,35 @@
             <p class="subtitle">Stay productive, stay calm.</p>
         </header>
 
+        <nav class="main-nav"
+            style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.5); padding: 1rem; border-radius: 12px; backdrop-filter: blur(10px);">
+            <div class="nav-links">
+                {% if user.is_authenticated %}
+                <span style="margin-right: 1rem; font-weight: 600;">Hello, {{ user.username }}</span>
+                <a href="{% url 'task_list' %}" style="margin-right: 1rem;">My Tasks</a>
+                {% if user.is_superuser %}
+                <a href="{% url 'admin_dashboard' %}" style="margin-right: 1rem; color: var(--primary-color);">Admin
+                    Dashboard</a>
+                {% endif %}
+                {% endif %}
+            </div>
+            <div class="nav-actions">
+                {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit"
+                        style="background: none; border: none; cursor: pointer; color: var(--danger-color); font-weight: 600;">Log
+                        Out</button>
+                </form>
+                {% else %}
+                <a href="{% url 'login' %}">Log In</a>
+                {% endif %}
+            </div>
+        </nav>
+
         {% block content %}
         {% endblock %}
     </div>
 </body>
+
 </html>

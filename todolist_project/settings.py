@@ -124,4 +124,15 @@ LOGIN_REDIRECT_URL = 'task_list'
 LOGOUT_REDIRECT_URL = 'login'
 
 # Login URL for @login_required decorator
+# Login URL for @login_required decorator
 LOGIN_URL = 'login'
+
+# Email Config
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+

@@ -1,0 +1,26 @@
+{% extends 'todos/base.html' %}
+
+{% block content %}
+<div class="card"
+    style="max-width: 500px; margin: 2rem auto; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;">
+    <h2 style="color: var(--danger-color); margin-bottom: 1rem;">Delete User?</h2>
+
+    <p style="margin-bottom: 2rem; color: var(--text-color);">
+        Are you sure you want to delete the user <strong>{{ user_to_delete.username }}</strong>?
+        <br><br>
+        <span style="font-size: 0.9rem; color: var(--text-muted);">
+            This will also delete <strong>ALL tasks</strong> associated with this user. This action cannot be undone.
+        </span>
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-actions" style="display: flex; gap: 1rem; justify-content: center;">
+            <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary"
+                style="background: #e2e8f0; color: #4a5568;">Cancel</a>
+            <button type="submit" class="btn btn-danger" style="background: var(--danger-color); color: white;">Yes,
+                Delete User</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

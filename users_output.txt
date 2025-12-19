@@ -1,0 +1,4 @@
+Total users: 3
+User: mosebemos26@gmail.com, Email: , Is Superuser: False
+User: reminder_test_user, Email: test@example.com, Is Superuser: False
+User: admin, Email: admin@example.com, Is Superuser: True

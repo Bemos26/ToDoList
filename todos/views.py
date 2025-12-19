@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from .models import Task
 from django.contrib.auth.models import User
+from .forms import SignUpForm
 
 # --- Public/Auth Views ---
 
@@ -12,13 +13,13 @@ def signup(request):
     Handle user registration.
     """
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user) # Auto-login after signup
             return redirect('task_list')
     else:
-        form = UserCreationForm()
+        form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
 
 # --- Task Views (Protected) ---

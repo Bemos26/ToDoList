@@ -1,0 +1,60 @@
+{% extends 'todos/base.html' %}
+
+{% block content %}
+<div class="dashboard-header"
+    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+    <h2>Admin Dashboard</h2>
+    <a href="{% url 'task_list' %}" class="btn btn-secondary">Back to My Tasks</a>
+</div>
+
+<div class="card"
+    style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+    <h3 style="margin-bottom: 1.5rem;">User Management</h3>
+
+    <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="border-bottom: 2px solid #f0f0f0;">
+                    <th style="text-align: left; padding: 1rem;">Username</th>
+                    <th style="text-align: left; padding: 1rem;">Email</th>
+                    <th style="text-align: left; padding: 1rem;">Date Joined</th>
+                    <th style="text-align: center; padding: 1rem;">Tasks</th>
+                    <th style="text-align: right; padding: 1rem;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stat in user_stats %}
+                <tr style="border-bottom: 1px solid #f9f9f9;">
+                    <td style="padding: 1rem;">
+                        <span style="font-weight: 600;">{{ stat.user.username }}</span>
+                        {% if stat.user.is_superuser %}
+                        <span style="background: var(--primary-color); color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; margin-left: 0.5rem;">ADMIN</span>
+                        {% endif %}
+                    </td>
+                    <td style="padding: 1rem; color: var(--text-muted);">{{ stat.user.email|default:"-" }}</td>
+                    <td style="padding: 1rem; color: var(--text-muted);">{{ stat.user.date_joined|date:"M d, Y" }}</td>
+                    <td style="padding: 1rem; text-align: center;">
+                        <span style="background: #eef2f7; padding: 4px 8px; border-radius: 10px; font-size: 0.85rem; font-weight: 600;">{{ stat.task_count }}</span>
+                    </td>
+                    <td style="padding: 1rem; text-align: right;">
+                        {% if stat.user != user %}
+                        <a href="{% url 'admin_delete_user' stat.user.id %}" class="btn-icon delete"
+                            style="color: var(--danger-color); text-decoration: none; font-weight: 600;">
+                            Delete
+                        </a>
+                        {% else %}
+                        <span style="color: var(--text-muted);">Current</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">No users found.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+Login successful. Checking users...
+Content length: 6465
+FOUND: mosebemos26
+FOUND: reminder_test_user
+Table Body Content:
+<tbody>
+                
+                <tr style="border-bottom: 1px solid #f9f9f9;">
+                    <td style="padding: 1rem;">
+                        <span style="font-weight: 600;">admin</span>
+                        
+                        <span style="background: var(--primary-color); color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; margin-left: 0.5rem;">ADMIN</span>
+                        
+                    </td>
+                    <td style="padding: 1rem; color: var(--text-muted);">admin@example.com</td>
+                    <td style="padding: 1rem; color: var(--text-muted);">Dec 19, 2025</td>
+                    <td style="padding: 1rem; text-align: center;">
+                        <span style="background: #eef2f7; padding: 4px 8px; border-radius: 10px; font-size: 0.85rem; font-weight: 600;">0</span>
+                    </td>
+                    <td style="padding: 1rem; text-align: right;">
+                        
+                        <span style="color: var(--text-muted);">Current</span>
+                        
+                    </td>
+                </tr>
+                
+                <tr style="border-bottom: 1px solid #f9f9f9;">
+                    <td style="padding: 1rem;">
+                        <span style="font-weight: 600;">reminder_test_user</span>
+                        
+                    </td>
+                    <td style="padding: 1rem; color: var(--text-muted);">test@example.com</td>
+                    <td style="padding: 1rem; color: var(--text-muted);">Dec 19, 2025</td>
+                    <td style="padding: 1rem; text-align: center;">
+                        <span style="background: #eef2f7; padding: 4px 8px; border-radius: 10px; font-size: 0.85rem; font-weight: 600;">1</span>
+                    </td>
+                    <td style="padding: 1rem; text-align: right;">
+                        
+                        <a href="/dashboard/user/2/delete/" class="btn-icon delete"
+                            style="color: var(--danger-color); text-decoration: none; font-weight: 600;">
+                            Delete
+                        </a>
+                        
+                    </td>
+                </tr>
+                
+                <tr style="border-bottom: 1px solid #f9f9f9;">
+                    <td style="padding: 1rem;">
+                        <span style="font-weight: 600;">mosebemos26@gmail.com</span>
+                        
+                    </td>
+                    <td style="padding: 1rem; color: var(--text-muted);">-</td>
+                    <td style="padding: 1rem; color: var(--text-muted);">Dec 19, 2025</td>
+                    <td style="padding: 1rem; text-align: center;">
+                        <span style="background: #eef2f7; padding: 4px 8px; border-radius: 10px; font-size: 0.85rem; font-weight: 600;">1</span>
+                    </td>
+                    <td style="padding: 1rem; text-align: right;">
+                        
+                        <a href="/dashboard/user/1/delete/" class="btn-icon delete"
+                            style="color: var(--danger-color); text-decoration: none; font-weight: 600;">
+                            Delete
+                        </a>
+                        
+                    </td>
+                </tr>
+                
+            </tbody>

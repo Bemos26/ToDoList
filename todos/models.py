@@ -21,6 +21,9 @@ class Task(models.Model):
     
     # Optional due date for the task
     due_date = models.DateTimeField(blank=True, null=True)
+    
+    # Track if reminder email has been sent
+    reminder_sent = models.BooleanField(default=False)
 
     def __str__(self):
         """
